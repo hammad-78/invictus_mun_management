@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "175850117633",
+    "project_id": "invictus-mun-management",
+    "storage_bucket": "invictus-mun-management.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175850117633:android:6b80eb0272fbe76145fe00",
+        "android_client_info": {
+          "package_name": "com.example.invictus_mun_management"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8birF6JFyYPyYTX_0ySRRKxj0wXjJ1OU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
