@@ -105,21 +105,25 @@ class PDFService {
   }) async {
     return _buildReport(
       title: 'Delegate Attendance Report',
-      headers: const ['Delegate Name', 'Delegate ID', 'Present Status'],
+      headers: const ['Delegate Name', 'Delegate ID', 'Attendance Dates'],
       rows: delegates.map((delegate) {
-        final marked = attendance.any(
-          (item) =>
-              item.personType == 'delegate' &&
-              item.personId == delegate.delegateId &&
-              item.present,
-        );
+        final days = attendance
+            .where(
+              (item) =>
+                  item.personType == 'delegate' &&
+                  item.personId == delegate.delegateId &&
+                  item.present,
+            )
+            .map((item) => 'Day ${item.day}')
+            .toSet()
+            .join(', ');
         return [
           delegate.name,
           delegate.delegateId,
-          marked ? 'Present' : 'Absent',
+          days.isEmpty ? '-' : days,
         ];
       }).toList(),
-      summary: 'Present Delegates: ${attendance.where((item) => item.personType == 'delegate' && item.present).length}',
+      summary: 'Present Delegate Marks: ${attendance.where((item) => item.personType == 'delegate' && item.present).length}',
     );
   }
 

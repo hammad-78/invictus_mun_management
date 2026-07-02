@@ -80,12 +80,6 @@ class AttendanceViewModel extends ChangeNotifier {
     required int day,
     required bool present,
   }) async {
-    if (personType == 'delegate' && day != 1) {
-      errorMessage = 'Delegates can only be marked for Day 1.';
-      notifyListeners();
-      return false;
-    }
-
     final attendanceId = '$personType-$personId-day$day';
     final model = AttendanceModel(
       attendanceId: attendanceId,

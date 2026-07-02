@@ -108,12 +108,23 @@ class DashboardScreen extends StatelessWidget {
                       itemBuilder: (context, index) => cards[index],
                     ),
                   ),
+                  const SizedBox(height: 16),
+                  Center(
+                    child: Text(
+                      'Developed by Hammad Ali Khan & Muhammad Majid Nawaz',
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
         ],
       ),
+      
+      
     );
   }
 }

@@ -74,18 +74,17 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                           });
                         },
                       ),
-                      if (_personType == 'team')
-                        SegmentedButton<int>(
-                          segments: const [
-                            ButtonSegment(value: 1, label: Text('Day 1')),
-                            ButtonSegment(value: 2, label: Text('Day 2')),
-                            ButtonSegment(value: 3, label: Text('Day 3')),
-                          ],
-                          selected: {_day},
-                          onSelectionChanged: (value) {
-                            setState(() => _day = value.first);
-                          },
-                        ),
+                      SegmentedButton<int>(
+                        segments: const [
+                          ButtonSegment(value: 1, label: Text('Day 1')),
+                          ButtonSegment(value: 2, label: Text('Day 2')),
+                          ButtonSegment(value: 3, label: Text('Day 3')),
+                        ],
+                        selected: {_day},
+                        onSelectionChanged: (value) {
+                          setState(() => _day = value.first);
+                        },
+                      ),
                       SizedBox(
                         width: 360,
                         child: TextField(
@@ -176,6 +175,7 @@ class _DelegateAttendanceTable extends StatelessWidget {
               DataColumn(label: Text('Delegate ID')),
               DataColumn(label: Text('Name')),
               DataColumn(label: Text('Committee')),
+              DataColumn(label: Text('Day')),
               DataColumn(label: Text('Status')),
               DataColumn(label: Text('Action')),
             ],
@@ -192,6 +192,7 @@ class _DelegateAttendanceTable extends StatelessWidget {
                   DataCell(Text(delegate.delegateId)),
                   DataCell(Text(delegate.name)),
                   DataCell(Text(delegate.committee)),
+                  DataCell(Text('Day $day')),
                   DataCell(Text(status)),
                   DataCell(_AttendanceActions(
                     key: ValueKey(
@@ -199,7 +200,7 @@ class _DelegateAttendanceTable extends StatelessWidget {
                     ),
                     personId: delegate.delegateId,
                     personType: 'delegate',
-                    day: 1,
+                    day: day,
                     record: record,
                   )),
                 ],

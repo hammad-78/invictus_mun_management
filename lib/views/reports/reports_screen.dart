@@ -40,7 +40,7 @@ class ReportsScreen extends StatelessWidget {
       ),
       _ReportAction(
         title: 'Delegate Attendance Report',
-        subtitle: 'Day 1 attendance status for every delegate.',
+        subtitle: 'Delegate attendance dates across Day 1, Day 2, and Day 3.',
         filename: 'delegate_attendance_report.pdf',
         builder: () => PDFService().generateDelegateAttendanceReport(
           delegates: delegates,
